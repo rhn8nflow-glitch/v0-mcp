@@ -163,12 +163,10 @@ async function main(): Promise<void> {
   }
 }
 
-// Start the server if this file is executed directly
-if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
-    console.error('❌ Fatal error:', error);
-    process.exit(1);
-  });
-}
+// Start the server
+main().catch((error) => {
+  console.error('❌ Fatal error:', error);
+  process.exit(1);
+});
 
 export { V0McpServer };

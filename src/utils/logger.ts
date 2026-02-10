@@ -21,7 +21,7 @@ export const logger = winston.createLogger({
     winston.format.timestamp(),
     winston.format.errors({ stack: true }),
     winston.format.json(),
-    winston.format.printf(({ timestamp, level, message, stack, ...meta }) => {
+    winston.format.printf(({ timestamp, level, message, stack, ...meta }: any) => {
       const baseLog: any = {
         timestamp,
         level: level.toUpperCase(),
@@ -42,7 +42,7 @@ export const logger = winston.createLogger({
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format.simple(),
-        winston.format.printf(({ timestamp, level, message, stack, ...meta }) => {
+        winston.format.printf(({ timestamp, level, message, stack, ...meta }: any) => {
           let logMessage = `${timestamp} [${level}]: ${message}`;
           
           if (Object.keys(meta).length > 0) {
